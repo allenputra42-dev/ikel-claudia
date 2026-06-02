@@ -25,7 +25,7 @@
             font-family: 'Poppins', sans-serif;
             background-color: var(--color-black);
             color: var(--color-black);
-            overflow: hidden; /* Dikunci sebelum dibuka */
+            overflow: hidden;
             margin: 0;
             padding: 0;
         }
@@ -45,8 +45,6 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            
-            /* Setup Transisi Motion Blur */
             will-change: transform, filter, opacity;
             transition: transform 1s cubic-bezier(0.645, 0.045, 0.355, 1), 
                         filter 0.8s ease-in-out, 
@@ -55,7 +53,6 @@
             opacity: 1;
         }
 
-        /* Klasifikasi Efek Motion Blur saat Diklik */
         #cover-page.opened {
             transform: translateY(-100vh) scale(1.05);
             filter: blur(20px);
@@ -86,17 +83,16 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.75); /* Lapisan fade black tebal */
+            background-color: rgba(0, 0, 0, 0.75);
         }
 
-        /* Konten Utama ditaruh di atas Carousel agar tombol tidak terhalang */
         .cover-overlay-content {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 10; /* Berada di atas slide gambar */
+            z-index: 10;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -104,10 +100,9 @@
             text-align: center;
             color: var(--color-white);
             padding: 20px;
-            pointer-events: none; /* Menembus ke bawah */
+            pointer-events: none;
         }
 
-        /* Mengaktifkan klik hanya pada area tombol dan teks penting */
         .interactive-box {
             pointer-events: auto;
         }
@@ -331,7 +326,6 @@
 
     <audio id="wedding-audio" loop>
         <source src="lagu-wedding.mp3" type="audio/mp3">
-        <source src="lagu-wedding.mp3" type="audio/mp3">
     </audio>
 
     <div id="music-control" onclick="toggleMusic()">
@@ -392,7 +386,7 @@
             </section>
 
             <section class="py-5">
-                <h2 class="wedding-font section-title">Galeri Prewedding</h2>
+                <h2 class="wedding-font section-title">Long Story Short</h2>
                 <div class="broll-gallery-container">
                     <div class="broll-marquee-track">
                         <img src="foto1.jpg" class="broll-photo-item" alt="Prewed 1">
@@ -418,7 +412,7 @@
                             <p class="mb-1 fs-5"><strong>Jumat, 07 Agustus 2026</strong></p>
                             <p class="mb-4">15.00 WIT - Selesai</p>
                             <hr class="my-4">
-                            <p class="mb-1"><strong>Gereja Joseph Kam / Lokasi Pemberkatan</strong></p>
+                            <p class="mb-1"><strong>Gereja / Gereja Josep Kam</strong></p>
                             <p class="text-muted small">Jl. Rijali, Kel Karang Panjang, Kec. Sirimau, Kota Ambon, Maluku</p>
                             <a href="https://www.google.com/maps/place/Gereja+Josep+Kam/data=!4m2!3m1!1s0x0:0x6bdaf13c99c62cff?sa=X&ved=1t:2428&ictx=111" target="_blank" class="btn btn-dark-custom btn-sm mt-3">
                                 <i class="fas fa-map-marker-alt me-2"></i>Lihat Peta
@@ -428,11 +422,11 @@
                     <div class="col-md-6">
                         <div class="card-custom">
                             <i class="fas fa-glass-cheers fa-3x mb-4 text-dark-cream"></i>
-                            <h3 class="wedding-font mb-4 fs-2">Dinner</h3>
+                            <h3 class="wedding-font mb-4 fs-2">Resepsi Pernikahan</h3>
                             <p class="mb-1 fs-5"><strong>Jumat, 07 Agustus 2026</strong></p>
                             <p class="mb-4">17.00 WIT - Selesai</p>
                             <hr class="my-4">
-                            <p class="mb-1"><strong>Gereja Joseph Kam / Ruang Makan</strong></p>
+                            <p class="mb-1"><strong>Gedung Pertemuan / Gereja Josep Kam</strong></p>
                             <p class="text-muted small">Jl. Rijali, Kel Karang Panjang, Kec. Sirimau, Kota Ambon, Maluku</p>
                             <a href="https://www.google.com/maps/place/Gereja+Josep+Kam/data=!4m2!3m1!1s0x0:0x6bdaf13c99c62cff?sa=X&ved=1t:2428&ictx=111" target="_blank" class="btn btn-dark-custom btn-sm mt-3">
                                 <i class="fas fa-map-marker-alt me-2"></i>Lihat Peta
@@ -447,23 +441,23 @@
                     <div class="col-md-8">
                         <div class="card-custom">
                             <h2 class="wedding-font text-center mb-5 fs-1">Konfirmasi Kehadiran</h2>
-                            <form>
+                            <form id="rsvp-form">
                                 <div class="mb-3">
                                     <label class="form-label fw-bold">Nama Lengkap</label>
-                                    <input type="text" class="form-control form-control-lg" placeholder="Masukkan nama Anda">
+                                    <input type="text" id="rsvp-nama" class="form-control form-control-lg" placeholder="Masukkan nama Anda" required>
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label fw-bold">Konfirmasi Kehadiran</label>
-                                    <select class="form-select form-select-lg">
-                                        <option value="hadir">Ya, Saya akan hadir</option>
-                                        <option value="tidak">Maaf, Saya tidak bisa hadir</option>
+                                    <select id="rsvp-hadir" class="form-select form-select-lg">
+                                        <option value="Ya, Saya akan hadir">Ya, Saya akan hadir</option>
+                                        <option value="Maaf, Saya tidak bisa hadir">Maaf, Saya tidak bisa hadir</option>
                                     </select>
                                 </div>
                                 <div class="mb-4">
                                     <label class="form-label fw-bold">Jumlah Tamu</label>
-                                    <select class="form-select form-select-lg">
-                                        <option value="1">1 Orang</option>
-                                        <option value="2">2 Orang</option>
+                                    <select id="rsvp-tamu" class="form-select form-select-lg">
+                                        <option value="1 Orang">1 Orang</option>
+                                        <option value="2 Orang">2 Orang</option>
                                     </select>
                                 </div>
                                 <button type="submit" class="btn btn-dark-custom w-100 btn-lg mt-2">
@@ -482,14 +476,13 @@
                         <p class="lead text-white">Doa restu Anda merupakan karunia yang sangat berarti bagi kami. Namun jika Anda ingin memberikan tanda kasih, dapat melalui fitur di bawah ini:</p>
                     </div>
                 </div>
-                
                 <div class="row justify-content-center">
                     <div class="col-md-6 col-lg-5">
                         <div class="card-custom text-center py-5 shadow">
                             <i class="fas fa-credit-card fa-3x mb-4 text-dark-cream"></i>
                             <h4 class="mb-3 fw-bold text-uppercase" style="letter-spacing: 2px;">Bank BCA</h4>
-                            <p class="mb-1 fs-3 font-monospace fw-bold bg-light p-2 rounded" id="norek">1234567890</p>
-                            <p class="text-muted fs-5">A.n Ikel / Claudia</p>
+                            <p class="mb-1 fs-3 font-monospace fw-bold bg-light p-2 rounded" id="norek">0440 963765</p>
+                            <p class="text-muted fs-5">Claudia Bianca Gomies</p>
                             <button class="btn btn-outline-dark mt-3" onclick="copyRekening()">
                                 <i class="fas fa-copy me-2"></i>Salin Nomor Rekening
                             </button>
@@ -503,33 +496,22 @@
                     <div class="col-md-8">
                         <div class="card-custom">
                             <h2 class="wedding-font text-center mb-5 fs-1">Ucapan & Doa</h2>
-                            <form class="mb-5">
+                            <form id="ucapan-form" class="mb-5">
                                 <div class="mb-3">
-                                    <input type="text" class="form-control" placeholder="Nama Anda">
+                                    <input type="text" id="input-nama" class="form-control" placeholder="Nama Anda" required>
                                 </div>
                                 <div class="mb-3">
-                                    <textarea class="form-control" rows="4" placeholder="Tuliskan ucapan dan doa tulus Anda untuk kami..."></textarea>
+                                    <textarea id="input-ucapan" class="form-control" rows="4" placeholder="Tuliskan ucapan dan doa tulus Anda untuk kami..." required></textarea>
                                 </div>
-                                <button type="submit" class="btn btn-dark-custom w-100 mt-2">
+                                <button type="submit" class="btn btn-dark-custom w-100 mt-2" id="btn-kirim-ucapan">
                                     <i class="fas fa-comment-dots me-2"></i>Kirim Ucapan
                                 </button>
                             </form>
 
                             <h5 class="fw-bold mb-3"><i class="fas fa-comments me-2"></i>Harapan Teman & Keluarga</h5>
-                            <div class="comments-list p-3 rounded" style="max-height: 350px; overflow-y: auto; background: #f9f9f9; border: 1px solid #eee;">
-                                <div class="comment-box shadow-sm">
-                                    <div class="d-flex justify-content-between">
-                                        <strong>Keluarga Besar</strong>
-                                        <small class="text-muted">1 jam yang lalu</small>
-                                    </div>
-                                    <p class="mb-0 small mt-2 fst-italic">"Selamat menempuh hidup baru Ikel & Claudia! Semoga menjadi keluarga yang diberkati selalu oleh Tuhan."</p>
-                                </div>
-                                <div class="comment-box shadow-sm">
-                                    <div class="d-flex justify-content-between">
-                                        <strong>Sahabat Kuliah</strong>
-                                        <small class="text-muted">2 jam yang lalu</small>
-                                    </div>
-                                    <p class="mb-0 small mt-2 fst-italic">"Lancar sampai hari H ya kalian berdua! Akhirnya nyusul juga. Bahagia selamanya!"</p>
+                            <div id="comments-container" class="p-3 rounded" style="max-height: 400px; overflow-y: auto; background: #f9f9f9; border: 1px solid #eee;">
+                                <div class="text-center text-muted small py-3" id="loading-comment">
+                                    <i class="fas fa-spinner fa-spin me-2"></i>Memuat ucapan...
                                 </div>
                             </div>
                         </div>
@@ -555,27 +537,20 @@
         const musicControl = document.getElementById('music-control');
         const musicIcon = document.getElementById('music-icon');
 
-        // 1. Logika Buka Undangan (DIUPDATE JAMINAN ANTI MACET)
         function bukaUndangan() {
             const cover = document.getElementById('cover-page');
-            
-            // Tambah kelas CSS untuk trigger transisi motion-blur + gerak ke atas
             cover.classList.add('opened'); 
-            
-            // Nyalakan scroll body
             document.body.style.overflow = 'auto';
             
-            // Coba putar musik secara aman (jika gagal, fungsi penutupan cover tidak akan ikut macet)
             audio.play().then(() => {
                 musicControl.style.display = 'flex';
             }).catch(error => {
-                console.log("Autoplay dicegah browser, tombol dipaksa muncul agar bisa diklik manual oleh tamu.");
+                console.log("Autoplay dicegah browser.");
                 musicControl.style.display = 'flex';
                 musicIcon.classList.remove('spin-animation');
             });
         }
 
-        // 2. Logika Play/Pause Tombol Melayang
         function toggleMusic() {
             if (audio.paused) {
                 audio.play();
@@ -586,8 +561,8 @@
             }
         }
 
-        // 3. Logika Countdown Timer
-        const targetDate = new Date("Aug 07, 2026 09:00:00").getTime();
+        // Countdown Timer
+        const targetDate = new Date("Dec 12, 2026 09:00:00").getTime();
 
         const countdownInterval = setInterval(function() {
             const now = new Date().getTime();
@@ -613,15 +588,105 @@
             }
         }, 1000);
 
-        // 4. Logika untuk tombol Salin Nomor Rekening
         function copyRekening() {
             const norek = document.getElementById('norek').innerText;
             navigator.clipboard.writeText(norek).then(() => {
                 alert("Nomor rekening berhasil disalin: " + norek);
             }).catch(err => {
-                alert("Gagal menyalin text. Mohon salin secara manual.");
+                alert("Gagal menyalin text.");
             });
         }
+
+        // ================= INTERAKSI DATABASE GOOGLE SHEETS & NOMOR MEJA =================
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzWDo9ubNtDV3FO1hOnbxcIhhZlvO661sqWD7J1Z2e3ZGM8S7G4RO1JYqRPv_BAq7PGog/exec";
+
+        function loadComments() {
+            const container = document.getElementById('comments-container');
+            
+            fetch(SCRIPT_URL)
+            .then(response => response.json())
+            .then(data => {
+                container.innerHTML = ''; 
+                if(!data || data.length === 0) {
+                    container.innerHTML = '<div class="text-center text-muted small py-3">Belum ada ucapan. Jadilah yang pertama!</div>';
+                    return;
+                }
+                data.reverse().forEach(item => {
+                    if(item.ucapan) { 
+                        const box = document.createElement('div');
+                        box.className = 'comment-box shadow-sm';
+                        box.innerHTML = `
+                            <div class="d-flex justify-content-between">
+                                <strong>${item.nama}</strong>
+                                <small class="text-muted"><i class="fas fa-check-circle text-success me-1"></i>Tamu</small>
+                            </div>
+                            <p class="mb-0 small mt-2 fst-italic">"${item.ucapan}"</p>
+                        `;
+                        container.appendChild(box);
+                    }
+                });
+            })
+            .catch(error => {
+                console.error('Gagal memuat ucapan:', error);
+                container.innerHTML = '<div class="text-center text-muted small py-3">Belum ada ucapan yang dimuat.</div>';
+            });
+        }
+
+        window.addEventListener('DOMContentLoaded', loadComments);
+
+        // Kirim Form RSVP + Membaca Notif Nomor Meja Kiriman dari Apps Script
+        document.getElementById('rsvp-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button');
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Mengirim...';
+
+            const nama = document.getElementById('rsvp-nama').value;
+            const hadir = document.getElementById('rsvp-hadir').value;
+            const tamu = document.getElementById('rsvp-tamu').value;
+
+            fetch(`${SCRIPT_URL}?nama=${encodeURIComponent(nama)}&ucapan=&kehadiran=${encodeURIComponent(hadir)}&tamu=${encodeURIComponent(tamu)}`, { method: 'POST' })
+            .then(res => res.json())
+            .then(response => {
+                // Menampilkan nama dan nomor meja yang didapat dari database Google Sheets
+                alert(`Halo ${response.nama},\nKonfirmasi kehadiran berhasil dikirim!\n\nNomor Meja Anda: ${response.meja}`);
+                
+                document.getElementById('rsvp-form').reset();
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-paper-plane me-2"></i>Kirim Konfirmasi (RSVP)';
+            })
+            .catch(err => {
+                alert('Terjadi kesalahan saat mengirim RSVP, coba lagi ges.');
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-paper-plane me-2"></i>Kirim Konfirmasi (RSVP)';
+            });
+        });
+
+        // Kirim Form Ucapan & Doa
+        document.getElementById('ucapan-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = document.getElementById('btn-kirim-ucapan');
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Mengirim...';
+
+            const nama = document.getElementById('input-nama').value;
+            const ucapan = document.getElementById('input-ucapan').value;
+
+            fetch(`${SCRIPT_URL}?nama=${encodeURIComponent(nama)}&ucapan=${encodeURIComponent(ucapan)}&kehadiran=&tamu=`, { method: 'POST' })
+            .then(res => res.json())
+            .then(response => {
+                alert('Ucapan dan doa tulus Anda berhasil dikirim!');
+                document.getElementById('ucapan-form').reset();
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-comment-dots me-2"></i>Kirim Ucapan';
+                loadComments(); 
+            })
+            .catch(err => {
+                alert('Gagal mengirim ucapan, coba lagi ges.');
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-comment-dots me-2"></i>Kirim Ucapan';
+            });
+        });
     </script>
 
 </body>
